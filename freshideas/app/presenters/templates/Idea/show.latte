@@ -1,0 +1,53 @@
+
+{block content}
+<div id="banner">
+	<h1 n:block=title>Congratulations!</h1>
+</div>
+
+<div id="content">
+
+ <p> <a n:href="Homepage:default"> Back to Ideas </a></p>
+ <p> <a n:href="edit $idea->id"> Edit  this Idea  </a></p>
+
+<h1> {$idea->title} </h1>
+
+ <div class="date well">
+        Listed On : {$idea->create_date|date:'F j, Y'}
+ </div>
+
+ <div  class="details">
+    <ul> 
+    
+    <li> Estimated Time: {$idea->time_estimate} </li>
+    <li> Estimated Cost: {$idea->cost_estimate} </li>
+
+    </ul>
+ </div>
+
+
+ <div class="description">
+ 
+ {$idea->description}
+
+ </br>
+
+  <hr>
+
+   <h2> Comments </h2>
+
+   <div n:foreach="$comments as $comment" class="comment">
+           <div class="well">
+      <strong> {$comment->name} </strong>
+    <div>  {$comment->body} </div>
+
+   </div>
+
+    </div> 
+  <h2> Comment on this idea </h2>
+
+    {control commentForm}
+
+ </div>
+</div>
+{/block}
+
